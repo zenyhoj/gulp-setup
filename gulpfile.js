@@ -12,10 +12,13 @@ var paths = {
     srcHTML: 'src/**/*.html',
     srcCSS: 'src/**/*.css',
     srcJS: 'src/**/*.js',
+
     tmp: 'tmp', // tmp folder
-    tmpIndex: 'tmp/index.html', // index.html in tmp folder
+    // tmpIndex: 'tmp/index.html', // index.html in tmp folder
+    tmpHTML: 'tmp/**/*.html',
     tmpCSS: 'tmp/**/*.css', // css files in tmp folder
     tmpJS: 'tmp/**/*.js', // js files in tmp folder
+
     dist: 'dist',
     distIndex: 'dist/index.html',
     distCSS: 'dist/**/*.css',
@@ -46,7 +49,7 @@ gulp.task('copy', ['html', 'css', 'js']);
 gulp.task('inject', ['copy'], function () {
     var css = gulp.src(paths.tmpCSS);
     var js = gulp.src(paths.tmpJS);
-    return gulp.src(paths.tmpIndex)
+    return gulp.src(paths.tmpHTML)
         .pipe(inject(css, {
             relative: true
         }))
